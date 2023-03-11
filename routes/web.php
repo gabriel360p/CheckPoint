@@ -1,0 +1,67 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SessaoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProjetoController;
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('sessaos',SessaoController::class);
+
+    Route::controller(SessaoController::class)->group(function(){
+
+
+        Route::post('sessao/store','store')->name('sessao.store');
+
+
+        Route::get('sessao/all','all')->name('sessao.all');
+        Route::get('sessao/closeds','closeds')->name('sessao.closeds');
+        Route::get('sessao/opens','opens')->name('sessao.opens');
+
+
+        Route::get('sessao/closedPage/{sessao}','closedPage')->name('sessao.closedPage');
+        Route::post('sessao/closed/{sessao}','closed')->name('sessao.closed');
+
+        Route::get('sessao/reopen/{sessao}','reopen')->name('sessao.reopen');
+
+        Route::get('sessao/details/{sessao}','details')->name('sessao.details');
+    });
+
+    Route::resource('categorias',CategoriaController::class);
+
+    Route::resource('projetos',ProjetoController::class);
+    Route::get('projeto/inProduction',[ProjetoController::class,'inProduction']);
+    Route::get('projeto/outProduction',[ProjetoController::class,'outProduction']);
+
+    Route::get('projeto/closed/{projeto}',[ProjetoController::class,'closed']);
+    
+    Route::get('projeto/reopen/{projeto}',[ProjetoController::class,'reopen']);
+
+});
+
+require __DIR__.'/auth.php';
