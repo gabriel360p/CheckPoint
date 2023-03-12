@@ -1,30 +1,42 @@
 @extends('layouts.layout1')
 
 @section('layout')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/auth.css')}}">
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{asset('assets/img/svg/logo.svg')}}" type="image/x-icon">
+<!-- Custom styles -->
+<link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 
-<div class="wrapper">
-        <div class="logo">
-            <!-- <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt=""> -->
-            <!-- <img src="https://t9007041908.p.clickup-attachments.com/t9007041908/dc01b404-c35b-40a7-b1f6-5349e2788815/LOGO%20CEMF.png" alt=""> -->
-        </div>
-        <div class="text-center mt-4 name">
-            Login
-        </div>
-        <form class="p-3 mt-3" method="POST" action="{{route('deflogin')}}">
-        	@csrf
-            <div class="form-field d-flex align-items-center">
-                <span class="far fa-user"></span>
-                <input type="text" name="email" id="userName" placeholder="Email">
-            </div>
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-key"></span>
-                <input type="password" name="password" id="pwd" placeholder="Password">
-            </div>
-            <button class="btn mt-3">Login</button>
-        </form>
-        <div class="text-center fs-6">
-            <a href="#">Esqueceu a senha?</a> ou <a href="{{route('register')}}">Cadastrar-se</a>
-        </div>
-    </div>
+
+<div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">Bem vindo de volta!</h1>
+    <p class="sign-up__subtitle">Insira os seus dados para continuar</p>
+    <form class="sign-up-form form" action="{{route('deflogin')}}" method="POST">
+        @csrf
+      <label class="form-label-wrapper">
+        <p class="form-label">Email</p>
+        <input class="form-input" type="email" placeholder="Email" required name="email">
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Password</p>
+        <input class="form-input" type="password" placeholder="Senha" required name="password">
+      </label>
+      <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
+      <label class="form-checkbox-wrapper">
+        <input class="form-checkbox" type="checkbox" >
+        <span class="form-checkbox-label">Lembrar-me</span>
+      </label>
+      <button class="form-btn primary-default-btn transparent-btn">Sign in</button>
+    </form>
+  </article>
+</main>
+
+
+<!-- Chart library -->
+<script src="{{asset('assets/plugins/chart.min.js')}}"></script>
+<!-- Icons library -->
+<script src="{{asset('assets/plugins/feather.min.js')}}"></script>
+<!-- Custom scripts -->
+<script src="{{asset('assets/js/script.js')}}"></script>
 @endsection
