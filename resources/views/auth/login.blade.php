@@ -27,7 +27,7 @@
         <input class="form-checkbox" type="checkbox" >
         <span class="form-checkbox-label">Lembrar-me</span>
       </label>
-      <button class="form-btn primary-default-btn transparent-btn">Sign in</button>
+      <button class="form-btn primary-default-btn transparent-btn">Login</button>
     </form>
   </article>
 </main>
