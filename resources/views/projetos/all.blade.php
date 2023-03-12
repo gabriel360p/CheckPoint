@@ -37,6 +37,9 @@
 				@else
 					<a href="{{url('projeto/reopen',$projeto->id)}}" class="btn btn-outline-primary">Reabrir Projeto</a>
 				@endif
+				@if($message = Session::get('sessaoAberta'))
+					<span class="badge text-bg-warning">{{$message}}</span>
+				@endif
 			</td>
 			
 		</tr>
