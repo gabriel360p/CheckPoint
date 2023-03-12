@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Projeto;
 use App\Models\Sessao;
-use Illuminate\Http\Request;
+use App\Notifications\notifyNewProject;
 use Auth;
 
 class ProjetoController extends Controller
@@ -73,6 +74,8 @@ class ProjetoController extends Controller
             'link1Projeto'=>$request->link1Projeto,
             'producao'=>true,
         ]);
+        $projeto = $request->nome;
+        Auth::user()->notify(new notifyNewProject(Auth::user(),$projeto));
 
         return redirect(url('projetos'));
     }

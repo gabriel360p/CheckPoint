@@ -28,7 +28,7 @@ class SessaoController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
-        $projetos = \DB::table('projetos')->where('producao','=',true)->get();
+        $projetos = \DB::table('projetos')->where('producao','=',true)->where('user_id','=',Auth::id())->get();
 
         return view('sessaos.create',['categorias'=>$categorias,'projetos'=>$projetos]);
     }
@@ -47,6 +47,11 @@ class SessaoController extends Controller
             'projeto_id'=>$request->projeto,
         ]);
 
+        $user = Auth::user();
+        $finalidades=$request->finalidades;
+
+        Auth::user()->notify(new notifyOpenSession($user,$finalidades));
+
         return redirect(url('sessao/opens'));
     }
 
@@ -64,7 +69,7 @@ class SessaoController extends Controller
     public function show(Sessao $sessao)
     {
         $categorias = Categoria::all();
-        $projetos = \DB::table('projetos')->where('producao','=',true)->get();
+        $projetos = \DB::table('projetos')->where('producao','=',true)->where('user_id','=',Auth::id())->get();
 
         return view('sessaos.show',['sessao'=>$sessao,'categorias'=>$categorias,'projetos'=>$projetos]);
     }
@@ -124,7 +129,7 @@ class SessaoController extends Controller
     public function details(Sessao $sessao)
     {
         $categorias=Categoria::all();
-        $projetos = \DB::table('projetos')->where('producao','=',true)->get();
+        $projetos = \DB::table('projetos')->where('producao','=',true)->where('user_id','=',Auth::id())->get();
 
         return view('sessaos.details',['sessao'=>$sessao,'categorias'=>$categorias,'projetos'=>$projetos->id]);
     }
@@ -149,6 +154,11 @@ class SessaoController extends Controller
             'fechamento'=>$request->fechamento,
             'feitos'=>$request->feitos,           
         ]);
+
+        $user = Auth::user();
+        $feitos = $request->feitos;
+        
+        Auth::user()->notify(new notifyClosedSession($user, $feitos));
 
         return redirect(route('sessao.opens'));
     }

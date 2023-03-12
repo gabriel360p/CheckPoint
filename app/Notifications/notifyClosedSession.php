@@ -6,17 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\User;
 
 class notifyClosedSession extends Notification
 {
     use Queueable;
+    public $user;
+    public $feitos;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(User $user, $feitos)
     {
-        //
+        $this->user=$user;
+        $this->feitos=$feitos;
     }
 
     /**
@@ -26,7 +30,7 @@ class notifyClosedSession extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -35,9 +39,11 @@ class notifyClosedSession extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('CheckPoint')
+                    ->line('Olá '.$this->user->name.'! Uma nova sessão foi fechada.')
+                    ->line('feitos: '.$this->feitos)
+                    // ->action('Notification Action', url('/'))
+                    ->line('Gratidão por utilizar CheckPoint!');
     }
 
     /**

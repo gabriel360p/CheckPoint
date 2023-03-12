@@ -8,18 +8,18 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\User;
 
-class notifyOpenSession extends Notification
+class notifyNewProject extends Notification
 {
     use Queueable;
     public $user;
-    public $finalidades;
+    public $projeto;
     /**
      * Create a new notification instance.
      */
-    public function __construct(User $user, $finalidades)
+    public function __construct(User $user, $projeto)
     {
-        $this->user = $user;
-        $this->finalidades = $finalidades;
+        $this->user=$user;
+        $this->projeto=$projeto;
     }
 
     /**
@@ -39,8 +39,7 @@ class notifyOpenSession extends Notification
     {
         return (new MailMessage)
                     ->greeting('CheckPoint')
-                    ->line('Olá '.$this->user->name.'! Uma nova sessão foi aberta.')
-                    ->line('Finalidades: '.$this->finalidades)
+                    ->line('Olá '.$this->user->name.' ! O projeto '.$this->projeto.' foi cadastrado com sucesso')
                     // ->action('Notification Action', url('/'))
                     ->line('Gratidão por utilizar CheckPoint!');
     }
