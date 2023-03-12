@@ -24,7 +24,7 @@
       </label>
       <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
       <label class="form-checkbox-wrapper">
-        <input class="form-checkbox" type="checkbox" >
+        <input class="form-checkbox" type="checkbox" name="remember">
         <span class="form-checkbox-label">Lembrar-me</span>
       </label>
       <button class="form-btn primary-default-btn transparent-btn">Login</button>
