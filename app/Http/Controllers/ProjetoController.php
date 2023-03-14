@@ -22,6 +22,8 @@ class ProjetoController extends Controller
 
     public function closed(Projeto $projeto)
     {
+        $this->authorize('closedProject',$projeto);
+
         $sessaos=\DB::table('sessaos')->where('projeto_id','=',$projeto->id)->get();
         //update em massa
         // ->update(['aberta' => false]);
@@ -39,6 +41,8 @@ class ProjetoController extends Controller
 
     public function reopen(Projeto $projeto)
     {
+        $this->authorize('reopenProject',$projeto);
+
         $projeto->producao=true;
         $projeto->save();
         return redirect(url('projetos'));
@@ -92,6 +96,8 @@ class ProjetoController extends Controller
      */
     public function show(Projeto $projeto)
     {
+        $this->authorize('viewProject',$projeto);
+
         return view('projetos.show',['projeto'=>$projeto]);
     }
 
@@ -108,6 +114,8 @@ class ProjetoController extends Controller
      */
     public function update(Request $request, Projeto $projeto)
     {
+        $this->authorize('updateProject',$projeto);
+
         $projeto->update([
             'nome'=>$request->nome,
             'descricao'=>$request->descricao,

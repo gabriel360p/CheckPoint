@@ -68,6 +68,8 @@ class SessaoController extends Controller
 
     public function show(Sessao $sessao)
     {
+        $this->authorize('viewSession',$sessao);
+
         $categorias = Categoria::all();
         $projetos = \DB::table('projetos')->where('producao','=',true)->where('user_id','=',Auth::id())->get();
 
@@ -87,6 +89,8 @@ class SessaoController extends Controller
      */
     public function update(Request $request, Sessao $sessao)
     {
+        $this->authorize('updateSession',$sessao);
+
         $sessao->update([
             'abertura'=>$request->abertura,
             'categoria_id'=>$request->categoria,
@@ -137,6 +141,8 @@ class SessaoController extends Controller
 
     public function reopen(Sessao $sessao)
     {
+        $this->authorize('reopenSession',$sessao);
+
         $sessao->update([
             'aberta'=>true,
         ]);
@@ -146,6 +152,9 @@ class SessaoController extends Controller
 
     public function closed(Sessao $sessao, Request $request)
     {
+        $this->authorize('closedSession',$sessao);
+
+
         $sessao->update([
             'abertura'=>$request->abertura,
             'categoria_id'=>$request->categoria,
