@@ -32,6 +32,7 @@
 
 			<td>
 				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary">Show</a>
+				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary">Sessões</a>
 				<a href="{{url('projeto/reopen',$projeto->id)}}" class="btn btn-outline-primary">Reabrir Projeto</a>
 			</td>
 			
