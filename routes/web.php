@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
     
     Route::get('projeto/reopen/{projeto}',[ProjetoController::class,'reopen']);
 
+    Route::get('projeto/sessionsProject/{projeto}',[ProjetoController::class,'sessionsProject']);
+
 });
 
 require __DIR__.'/auth.php';

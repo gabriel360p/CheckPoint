@@ -13,6 +13,13 @@ class ProjetoController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function sessionsProject(Projeto $projeto)
+    {
+        $sessaos=\DB::table('sessaos')->where('user_id','=',Auth::id())->where('projeto_id','=',$projeto->id)->simplePaginate(5);
+        // dd($sessaos);
+        return view('projetos.sessionsProject',['sessaos'=>$sessaos,'projeto'=>$projeto]);
+    }
+
     public function closed(Projeto $projeto)
     {
         $sessaos=\DB::table('sessaos')->where('projeto_id','=',$projeto->id)->get();

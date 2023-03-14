@@ -32,6 +32,7 @@
 
 			<td>
 				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary">Show</a>
+				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary">Sessões</a>
 				@if($projeto->producao==true)
 					<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary">Fechar Projeto</a>
 				@else
