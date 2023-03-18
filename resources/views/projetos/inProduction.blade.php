@@ -6,7 +6,7 @@
 @section('layout2-body')
 <div class="row">
 	<div class="col">
-		<a class="btn btn-outline-primary" href="{{route('projetos.create')}}">+</a>
+		<a class="btn btn-outline-primary" href="{{route('projetos.create')}}"><i class="fa-solid fa-plus"></i></a>
 	</div>
 </div>
 
@@ -31,12 +31,9 @@
 			</td>
 
 			<td>
-				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary">Show</a>
-				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary">Sessões</a>
-				<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary">Fechar Projeto</a>	
-				@if($message = Session::get('sessaoAberta'))
-					<span class="badge text-bg-warning">{{$message}}</span>
-				@endif
+				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-table-list"></i></a>
+				<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i></a>
 			</td>
 			
 		</tr>

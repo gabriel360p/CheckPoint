@@ -25,13 +25,16 @@ class ProjetoController extends Controller
     {
         $this->authorize('closedProject',$projeto);
 
-        $sessaos=\DB::table('sessaos')->where('projeto_id','=',$projeto->id)->get();
+        //procurando sessões abertas, se não houver ele fecha o projeto.
+        $sessaos=\DB::table('sessaos')->where('projeto_id','=',$projeto->id)->where('aberta','=',true)->get();
         //update em massa
         // ->update(['aberta' => false]);
         // ->update(['fechamento','=',date('d/m/Y H:i')]);
 
+        // dd(count($sessaos));
+
         if(count($sessaos)!=0){
-            return back()->with('sessaoAberta','O projeto '.$projeto->nome.' não pode ser fechado pois possui sessões abertas');
+            return redirect(url('projeto/sessionsProject',$projeto->id))->with('sessaoAberta','O projeto '.$projeto->nome.' não pode ser fechado pois possui sessões abertas');
         }else{
             $projeto->producao=false;
             $projeto->save();

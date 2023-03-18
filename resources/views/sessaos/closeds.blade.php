@@ -6,7 +6,7 @@
 @section('layout2-body')
 <div class="row">
 	<div class="col">
-		<a class="btn btn-outline-primary" href="{{route('sessaos.create')}}">+</a>
+		<a class="btn btn-outline-primary" href="{{route('sessaos.create')}}"><i class="fa-solid fa-plus"></i></a>
 	</div>
 </div>
 
@@ -47,8 +47,8 @@
 			<td>{{$sessao->fechamento}}</td>
 
 			<td>
-				<a href="{{route('sessao.reopen',$sessao->id)}}" class="btn btn-outline-primary">Reabrir</a>
-				<a href="{{route('sessao.details',$sessao->id)}}" class="btn btn-outline-primary">Detalhes</a>
+				<a href="{{route('sessao.reopen',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+				<a href="{{route('sessao.details',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
 			</td>
 		</tr>
 		@endforeach

@@ -41,11 +41,6 @@ Route::post('reset-password', [NewPasswordController::class, 'store'])
 
 
 
-
-
-
-
-
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');

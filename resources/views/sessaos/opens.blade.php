@@ -6,7 +6,7 @@
 @section('layout2-body')
 <div class="row">
 	<div class="col">
-		<a class="btn btn-outline-primary" href="{{route('sessaos.create')}}">+</a>
+		<a class="btn btn-outline-primary" href="{{route('sessaos.create')}}"><i class="fa-solid fa-plus"></i></a>
 	</div>
 </div>
 
@@ -42,8 +42,8 @@
 			@endphp
 		<td>{{$projeto->nome}}</td>
 			<td>
-				<a href="{{route('sessao.closedPage',$sessao->id)}}" class="btn btn-outline-primary">Fechar</a>
-				<a href="{{route('sessaos.show',$sessao->id)}}" class="btn btn-outline-primary">Detalhes</a>
+				<a href="{{route('sessao.closedPage',$sessao->id)}}" class="btn btn-outline-primary" ><i class="fa-solid fa-xmark"></i></a>
+				<a href="{{route('sessaos.show',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
 			</td>
 		</tr>
 		@endforeach

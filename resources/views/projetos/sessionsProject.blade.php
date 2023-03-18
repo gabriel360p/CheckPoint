@@ -12,6 +12,10 @@
 	</div>
 </div>
 
+@if($message = Session::get('sessaoAberta'))
+	<span class="badge text-bg-warning">{{$message}}</span>
+@endif
+
 <table class="table mt-2">
 	<thead>
 		<th>Finalidade</th>
