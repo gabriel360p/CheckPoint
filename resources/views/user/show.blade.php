@@ -12,13 +12,96 @@
 
 
 <!-- <div class="layer"></div> -->
-
-<main class="page-center">
+<div class="container">
 	<div class="row">
 	    <h1 class="sign-up__title">Perfil</h1>
-	    <p class="sign-up__subtitle">Dados do perfil</p>
 	</div>
 
+	<div class="row">
+		<div class="row stat-cards">
+		  <div class="col-md-6 col-xl-3">
+		    <article class="stat-cards-item">
+		      <a href="{{url('projetos')}}">
+		        <div class="stat-cards-icon primary">
+		          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+		        </div>
+		      </a>
+		      <div class="stat-cards-info">
+		        <p class="card-title">Total de Projetos</p>
+		        <br>
+		        @php
+		          use App\Models\Projeto;
+		          $countAllProjetcs =  Projeto::where('user_id',Auth::id())->count();
+		        @endphp
+		        <p class="stat-cards-info__num">{{$countAllProjetcs}}</p>
+		      </div>
+		    </article>
+		  </div>
+
+
+		  <div class="col-md-6 col-xl-3">
+		    <article class="stat-cards-item">
+		      <a href="{{url('projeto/inProduction')}}">
+
+		        <div class="stat-cards-icon primary">
+		          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+		        </div>
+		      </a>
+		      <div class="stat-cards-info">
+		        @php
+		          $countProjectsOpens =  Projeto::where('producao',true)->where('user_id',Auth::id())->count();
+		        @endphp
+		        <p class="card-title">Em produção</p>
+		        <br>
+		        <p class="stat-cards-info__num">{{$countProjectsOpens}}</p>
+		      </div>
+		    </article>
+		  </div>
+
+		<div class="col-md-6 col-xl-3">
+		    <article class="stat-cards-item">
+		      <a href="{{url('sessao/all')}}">
+		        <div class="stat-cards-icon primary">
+		          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+		        </div>
+		      </a>
+		        <div class="stat-cards-info">
+		          @php
+		            use App\Models\Sessao;
+		            $countAllSessions=Sessao::where('user_id',Auth::id())->count();
+		          @endphp
+		          <p class="card-title">Total de Sessãos</p>
+		          <br>
+		          <p class="stat-cards-info__num">{{$countAllSessions}}</p>
+		        </div>
+		    </article>
+		  </div>
+
+
+		  <div class="col-md-6 col-xl-3">
+		    <article class="stat-cards-item">
+		      <a href="{{route('sessao.opens')}}"> 
+		        <div class="stat-cards-icon primary">
+		          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+		        </div>
+		      </a>
+		        <div class="stat-cards-info">
+		          @php
+		            $countSessionsClosed =  Sessao::where('aberta',false)->where('user_id',Auth::id())->count();
+		          @endphp
+		          <p class="card-title" style="font-size:15px;">Sessões fechadas</p>
+		          <br>
+		          <p class="stat-cards-info__num">{{$countSessionsClosed}}</p>
+		        </div>
+		    </article>
+		  </div>
+		</div>
+
+	</div>
+	
+</div>
+
+<main class="page-center">
 	<form class="sign-up-form form" action="{{route('deflogin')}}" method="POST">
 	@csrf
 		<article class="sign-up">
@@ -34,49 +117,42 @@
 
 				      <label class="form-label-wrapper">
 				        <p class="form-label">Nome</p>
-				        <input class="form-input" type="text" placeholder="Senha" required name="name" value="{{$user->name}}">
+				        <input class="form-input" type="text" placeholder="Nome" required name="name" value="{{$user->name}}">
 				        @error('name')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
 				      </label>
 
 				      <label class="form-label-wrapper">
-				        <p class="form-label">Password</p>
-				        <input class="form-input" type="password" placeholder="Senha" required name="password">
+				        <p class="form-label">Senha</p>
+				        <small>Alterar Senha</small>
+				        <input class="form-input" type="password" placeholder="Senha" required name="new_password">
 				        @error('password')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
 				      </label>
 				      <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
-				      <label class="form-checkbox-wrapper">
-				        <input class="form-checkbox" type="checkbox" name="remember">
-				        <span class="form-checkbox-label">Lembrar-me</span>
-				      </label>
-				      <button class="form-btn primary-default-btn transparent-btn">Login</button>
+				      <!-- <button class="form-btn primary-default-btn transparent-btn">Editar</button> -->
 				</div>
 				<div class="col">
 				      <label class="form-label-wrapper">
-				        <p class="form-label">Email</p>
-				        <input class="form-input" type="email" placeholder="Email" required name="email">
-				        @error('email')
-				          <span class="badge text-bg-warning">{{$message}}</span>
-				        @enderror
-				      </label>
-				      <label class="form-label-wrapper">
-				        <p class="form-label">Password</p>
+				        <p class="form-label">Senha</p>
 				        <input class="form-input" type="password" placeholder="Senha" required name="password">
 				        @error('password')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
 				      </label>
-				      <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
-				      <label class="form-checkbox-wrapper">
-				        <input class="form-checkbox" type="checkbox" name="remember">
-				        <span class="form-checkbox-label">Lembrar-me</span>
+
+				      <label class="form-label-wrapper">
+				        <p class="form-label">Confirmar Senha</p>
+				        <input class="form-input" type="password" placeholder="Senha" required name="password_confirmation">
+				        @error('password_confirmation')
+				          <span class="badge text-bg-warning">{{$message}}</span>
+				        @enderror
 				      </label>
-				      <button class="form-btn primary-default-btn transparent-btn">Login</button>
 				</div>
 			</div>
+			<button class="form-btn primary-default-btn transparent-btn">Salvar</button>
 		</article>			
 	</form>	
 </main>

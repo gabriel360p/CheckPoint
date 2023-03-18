@@ -17,6 +17,18 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
+            'new_password'=>'min:8',
+            'password'=>'confirmed|min:8',
+            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name' => ['string', 'max:255'],
+            'new_password'=>'min:8',
+            'password'=>'confirmed|min:8',
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
