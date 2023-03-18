@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateRequest;
 use Auth;
 use Hash;
 
@@ -52,9 +53,20 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(ProfileUpdateRequest $request, User $user)
     {
-        //
+        $password=$request->password;
+
+        if(Hash::check($password,Auth::user()->password)){
+            $user->update([
+                'name'=>$request->name,
+                'email'=>$request->email,
+            ]);
+
+            return back()->with('saved','Alterações Salvas');
+        }
+
+        return back()->with('errorSenha','Senha incorreta');
     }
 
     /**

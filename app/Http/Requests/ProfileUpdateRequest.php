@@ -17,7 +17,6 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
-            'new_password'=>'min:8',
             'password'=>'confirmed|min:8',
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
@@ -26,10 +25,15 @@ class ProfileUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name' => ['string', 'max:255'],
-            'new_password'=>'min:8',
-            'password'=>'confirmed|min:8',
-            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'name.string' => 'O nome precisa ser expresso em caracteres literais',
+            'name.max'=>'O máximo de caracteres é de 255',
+
+            'password.confirmed'=>'As senhas não são iguais',
+            'password.min'=>'A senha precisa ter no minimo 8 caracteres',
+
+            'email.email' => 'O email não está seguindo o padrão comum, inclua "@"',
+            'email.max'=>'O máximo de caracteres é de 255',
+
         ];
     }
 }

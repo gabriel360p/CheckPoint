@@ -54,7 +54,7 @@
                         <span class="icon document" aria-hidden="true"></span>Sessões
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
+                            <!-- <span class="icon arrow-down" aria-hidden="true"></span> -->
                         </span>
                     </a>
                     <ul class="cat-sub-menu">
@@ -77,7 +77,7 @@
                         <span class="icon folder" aria-hidden="true"></span>Projetos
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
+                            <!-- <span class="icon arrow-down" aria-hidden="true"></span> -->
                         </span>
                     </a>
                     <ul class="cat-sub-menu">
@@ -102,7 +102,7 @@
                         <span class="icon paper" aria-hidden="true"></span>Categorias
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
+                            <!-- <span class="icon arrow-down" aria-hidden="true"></span> -->
                         </span>
                     </a>
                     <ul class="cat-sub-menu">
@@ -308,7 +308,7 @@
         <ul class="users-item-dropdown nav-user-dropdown dropdown">
            <li><a href="{{route('users.show',Auth::id())}}">
               <i data-feather="user" aria-hidden="true"></i>
-              <span>Profile</span>
+              <span>Perfil</span>
             </a></li>
 <!--          <li><a href="##">
               <i data-feather="settings" aria-hidden="true"></i>
@@ -316,7 +316,7 @@
             </a></li> -->
           <li><a class="danger" href="{{route('logout')}}">
               <i data-feather="log-out" aria-hidden="true"></i>
-              <span>Log out</span>
+              <span>Sair</span>
             </a></li>
         </ul>
       </div>

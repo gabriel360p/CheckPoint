@@ -102,14 +102,14 @@
 </div>
 
 <main class="page-center">
-	<form class="sign-up-form form" action="{{route('deflogin')}}" method="POST">
+	<form class="sign-up-form form" action="{{route('user.update',$user->id)}}" method="POST">
 	@csrf
 		<article class="sign-up">
 			<div class="row">
 				<div class="col">
 				      <label class="form-label-wrapper">
 				        <p class="form-label">Email</p>
-				        <input class="form-input" type="email" placeholder="Email" required name="email" value="{{$user->email}}">
+				        <input class="form-input" type="email" placeholder="Email"   name="email" value="{{$user->email}}">
 				        @error('email')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
@@ -117,27 +117,22 @@
 
 				      <label class="form-label-wrapper">
 				        <p class="form-label">Nome</p>
-				        <input class="form-input" type="text" placeholder="Nome" required name="name" value="{{$user->name}}">
+				        <input class="form-input" type="text" placeholder="Nome"   name="name" value="{{$user->name}}">
 				        @error('name')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
 				      </label>
 
-				      <label class="form-label-wrapper">
-				        <p class="form-label">Senha</p>
-				        <small>Alterar Senha</small>
-				        <input class="form-input" type="password" placeholder="Senha" required name="new_password">
-				        @error('password')
-				          <span class="badge text-bg-warning">{{$message}}</span>
-				        @enderror
+				      <label class="form-label-wrapper mb-2">
+				        <p class="form-label">Alterar Senha</p>
+				      	<a class="link-info forget-link" href="##">Solicitar Mudança de Senha</a>
 				      </label>
-				      <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
 				      <!-- <button class="form-btn primary-default-btn transparent-btn">Editar</button> -->
 				</div>
 				<div class="col">
 				      <label class="form-label-wrapper">
 				        <p class="form-label">Senha</p>
-				        <input class="form-input" type="password" placeholder="Senha" required name="password">
+				        <input class="form-input" type="password" placeholder="Senha"   name="password">
 				        @error('password')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
@@ -145,13 +140,19 @@
 
 				      <label class="form-label-wrapper">
 				        <p class="form-label">Confirmar Senha</p>
-				        <input class="form-input" type="password" placeholder="Senha" required name="password_confirmation">
+				        <input class="form-input" type="password" placeholder="Senha"   name="password_confirmation">
 				        @error('password_confirmation')
 				          <span class="badge text-bg-warning">{{$message}}</span>
 				        @enderror
 				      </label>
+					@if($message = Session::get('errorSenha'))
+						<span class="badge text-bg-warning">{{$message}}</span>
+					@endif
 				</div>
 			</div>
+			@if($message = Session::get('saved'))
+				<span class="badge text-bg-success">{{$message}}</span>
+			@endif
 			<button class="form-btn primary-default-btn transparent-btn">Salvar</button>
 		</article>			
 	</form>	
@@ -161,6 +162,4 @@
 <script src="{{asset('assets/plugins/chart.min.js')}}"></script>
 <!-- Icons library -->
 <script src="{{asset('assets/plugins/feather.min.js')}}"></script>
-<!-- Custom scripts -->
-<script src="{{asset('assets/js/script.js')}}"></script>
 @endsection
