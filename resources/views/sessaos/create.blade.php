@@ -12,7 +12,10 @@
       <label class="form-label-wrapper">
         <p class="form-label">Finalidade</p>
         <small>Insira o motivo da abertura</small>
-        <textarea class="form-input" placeholder="Finalidade" cols="50" name="finalidades" required></textarea>
+        <textarea class="form-input" placeholder="Finalidade" cols="50" name="finalidades" ></textarea>
+        @error('finalidades')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <label class="form-label-wrapper mb-4">
         <p class="form-label">Categoria</p>
@@ -31,6 +34,9 @@
 
 	    	@endswitch
         </select>
+        @error('categoria')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
 
 
@@ -51,6 +57,9 @@
 
         @endswitch
         </select>
+        @error('projeto')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
 
 
@@ -58,7 +67,10 @@
       <label class="form-label-wrapper">
         <p class="form-label">Horário de Abertura</p>
         <small>Insira o horário de Abertura</small>
-        <input class="form-input" type="datetime-local" name="abertura" required>
+        <input class="form-input" type="datetime-local" name="abertura" >
+        @error('abertura')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
 
         @if((count($categorias)==0)||(count($projetos)==0))

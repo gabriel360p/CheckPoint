@@ -8,6 +8,9 @@ use App\Models\Projeto;
 use App\Models\Categoria;
 use App\Notifications\notifyOpenSession;
 use App\Notifications\notifyClosedSession;
+use App\Http\Requests\OpenSessaoRequest;
+
+use App\Http\Requests\ClosedSessaoRequest;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -36,7 +39,7 @@ class SessaoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OpenSessaoRequest $request)
     {
         Sessao::create([
             'aberta'=>true,
@@ -150,7 +153,7 @@ class SessaoController extends Controller
         return redirect(route('sessao.opens'));
     }
 
-    public function closed(Sessao $sessao, Request $request)
+    public function closed(Sessao $sessao, ClosedSessaoRequest $request)
     {
         $this->authorize('closedSession',$sessao);
 
