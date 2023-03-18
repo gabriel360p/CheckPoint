@@ -7,18 +7,26 @@
 <main class="page-center">
   <article class="sign-up">
     <h1 class="sign-up__title">{{$projeto->nome}}</h1>
-    <form class="sign-up-form form" action="{{route('projetos.update',['projeto'=>$projeto->id])}}" method="post">
+    <form class="sign-up-form form" action="{{route('projeto.update',['projeto'=>$projeto->id])}}" method="post">
     	@csrf
       <label class="form-label-wrapper">
         <p class="form-label">Nome do projeto</p>
         <small>Insira o nome do projeto</small>
-        <input class="form-input" type="text" name="nome" required value="{{$projeto->nome}}">
+        <input class="form-input" type="text" name="nome"  value="{{$projeto->nome}}" required>
+        @error('nome')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
+      </label>
       </label>
 
       <label class="form-label-wrapper">
         <p class="form-label">Descrição</p>
         <small>Insira descrição do projeto</small>
         <textarea class="form-input" placeholder="Breve descrição do projeto" cols="50" name="descricao" required>{{$projeto->descricao}}</textarea>
+        @error('descricao')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
+      </label>
       </label>
 
 

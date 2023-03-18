@@ -7,6 +7,7 @@ use App\Models\Projeto;
 use App\Models\Sessao;
 use App\Notifications\notifyNewProject;
 use Auth;
+use App\Http\Requests\ProjetoRequest;
 
 class ProjetoController extends Controller
 {
@@ -75,8 +76,8 @@ class ProjetoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(ProjetoRequest $request)
+    {   
         Projeto::create([
             'user_id'=>Auth::id(),
             'nome'=>$request->nome,
@@ -85,6 +86,7 @@ class ProjetoController extends Controller
             'link1Projeto'=>$request->link1Projeto,
             'producao'=>true,
         ]);
+
         $projeto = $request->nome;
         Auth::user()->notify(new notifyNewProject(Auth::user(),$projeto));
 
@@ -112,7 +114,7 @@ class ProjetoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Projeto $projeto)
+    public function update(ProjetoRequest $request, Projeto $projeto)
     {
         $this->authorize('updateProject',$projeto);
 

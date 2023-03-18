@@ -13,14 +13,19 @@
         <p class="form-label">Nome do projeto</p>
         <small>Insira o nome do projeto</small>
         <input class="form-input" type="text" name="nome" required>
+        @error('nome')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
 
       <label class="form-label-wrapper">
         <p class="form-label">Descrição</p>
         <small>Insira descrição do projeto</small>
         <textarea class="form-input" placeholder="Breve descrição do projeto" cols="50" name="descricao" required></textarea>
+        @error('descricao')
+          <span class="badge text-bg-warning">{{$message}}</span>
       </label>
-
+      @enderror
 
       <label class="form-label-wrapper">
         <p class="form-label">Link 1 do projeto</p>

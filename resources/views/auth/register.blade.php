@@ -16,18 +16,30 @@
       <label class="form-label-wrapper">
         <p class="form-label">Nome</p>
         <input class="form-input" type="text" placeholder="Nome" required name="name">
+        @error('name')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <label class="form-label-wrapper">
         <p class="form-label">Email</p>
         <input class="form-input" type="email" placeholder="Email" required name="email">
+        @error('email')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <label class="form-label-wrapper">
         <p class="form-label">Senha</p>
         <input class="form-input" type="password" placeholder="Senha" required name="password">
+        @error('password')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <label class="form-label-wrapper">
         <p class="form-label">Confirmar Senha</p>
         <input class="form-input" type="password" placeholder="Confirmar Senha" required name="password_confirmation">
+        @error('password_confirmation')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <button class="form-btn primary-default-btn transparent-btn">Cadastrar</button>
     </form>

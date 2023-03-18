@@ -17,10 +17,16 @@
       <label class="form-label-wrapper">
         <p class="form-label">Email</p>
         <input class="form-input" type="email" placeholder="Email" required name="email">
+        @error('email')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <label class="form-label-wrapper">
         <p class="form-label">Password</p>
         <input class="form-input" type="password" placeholder="Senha" required name="password">
+        @error('password')
+          <span class="badge text-bg-warning">{{$message}}</span>
+        @enderror
       </label>
       <a class="link-info forget-link" href="##">Esqueceu a senha?</a>
       <label class="form-checkbox-wrapper">
@@ -40,3 +46,4 @@
 <!-- Custom scripts -->
 <script src="{{asset('assets/js/script.js')}}"></script>
 @endsection
+

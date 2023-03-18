@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('categorias',CategoriaController::class);
 
     Route::resource('projetos',ProjetoController::class);
+    Route::post('projeto/update',[ProjetoController::class,'update'])->name('projeto.update');
+
     Route::get('projeto/inProduction',[ProjetoController::class,'inProduction']);
     Route::get('projeto/outProduction',[ProjetoController::class,'outProduction']);
 
