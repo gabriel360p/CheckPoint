@@ -306,11 +306,11 @@
           </span>
         </button>
         <ul class="users-item-dropdown nav-user-dropdown dropdown">
-<!--           <li><a href="##">
+           <li><a href="{{route('users.show',Auth::id())}}">
               <i data-feather="user" aria-hidden="true"></i>
               <span>Profile</span>
             </a></li>
-          <li><a href="##">
+<!--          <li><a href="##">
               <i data-feather="settings" aria-hidden="true"></i>
               <span>Account settings</span>
             </a></li> -->

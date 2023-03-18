@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProjetoController;
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function () {
     Route::get('projeto/reopen/{projeto}',[ProjetoController::class,'reopen']);
 
     Route::get('projeto/sessionsProject/{projeto}',[ProjetoController::class,'sessionsProject']);
+
+
+    Route::resource('users',UserController::class);
 
 });
 

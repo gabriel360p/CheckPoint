@@ -56,4 +56,5 @@ class userPolicy
     {
        return $user->id===$sessao->user_id ? Response::allow() : Response::deny('Você não criou esta sessão');
     }
+
 }
