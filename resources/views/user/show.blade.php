@@ -125,7 +125,7 @@
 
 				      <label class="form-label-wrapper mb-2">
 				        <p class="form-label">Alterar Senha</p>
-				      	<a class="link-info forget-link" href="##">Solicitar Mudança de Senha</a>
+				      	<a class="link-info forget-link" href="{{route('password.request')}}">Solicitar Mudança de Senha</a>
 				      </label>
 				      <!-- <button class="form-btn primary-default-btn transparent-btn">Editar</button> -->
 				</div>

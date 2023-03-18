@@ -10,9 +10,9 @@
 <div class="layer"></div>
 <main class="page-center">
   <article class="sign-up">
-    <h1 class="sign-up__title">Bem vindo de volta!</h1>
-    <p class="sign-up__subtitle">Insira os seus dados para continuar</p>
-    <form class="sign-up-form form" action="{{route('deflogin')}}" method="POST">
+    <h1 class="sign-up__title">Alterar Senha</h1>
+    <p class="sign-up__subtitle">Antes, confirme o email</p>
+    <form class="sign-up-form form" action="{{route('password.email')}}" method="POST">
         @csrf
       <label class="form-label-wrapper">
         <p class="form-label">Email</p>
@@ -21,19 +21,13 @@
           <span class="badge text-bg-warning">{{$message}}</span>
         @enderror
       </label>
-      <label class="form-label-wrapper">
-        <p class="form-label">Password</p>
-        <input class="form-input" type="password" placeholder="Senha" required name="password">
-        @error('password')
-          <span class="badge text-bg-warning">{{$message}}</span>
-        @enderror
-      </label>
-      <a class="link-info forget-link" href="{{route('password.request')}}">Esqueceu a senha?</a>
-      <label class="form-checkbox-wrapper">
-        <input class="form-checkbox" type="checkbox" name="remember">
-        <span class="form-checkbox-label">Lembrar-me</span>
-      </label>
-      <button class="form-btn primary-default-btn transparent-btn">Login</button>
+      @if($message=Session::get('status'))
+        <span class="badge text-bg-primary">{{$message}}</span>
+      @endif
+      @if($message=Session::get('email'))
+        <span class="badge text-bg-primary">{{$message}}</span>
+      @endif
+      <button class="form-btn primary-default-btn transparent-btn">Verificar</button>
     </form>
   </article>
 </main>
