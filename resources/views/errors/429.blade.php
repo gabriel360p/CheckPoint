@@ -1,5 +1,9 @@
-@extends('errors::minimal')
+@extends('errors.master')
 
-@section('title', __('Too Many Requests'))
-@section('code', '429')
-@section('message', __('Too Many Requests'))
+@section('head')
+@endsection
+
+@section('body')
+@endsection
+
+@section('messagem','429 - Too Many Requests')

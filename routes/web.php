@@ -5,6 +5,8 @@ use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProjetoController;
 use App\Http\Controllers\UserController;
+// use Closure;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +72,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('users',UserController::class);
     Route::post('user/update/{user}',[UserController::class,'update'])->name('user.update');
+
+    Route::get('back',function(Request $request){
+        return back();
+    })->name('back');
 });
 
 require __DIR__.'/auth.php';

@@ -31,9 +31,11 @@
 			</td>
 
 			<td>
-				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
-				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-table-list"></i></a>
-				<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i></a>
+				<div class="btn-group">	
+					<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+					<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-table-list"></i></a>
+					<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i></a>
+				</div>
 			</td>
 			
 		</tr>

@@ -8,7 +8,7 @@
 	<div class="col">
 		<span class="display-6">Sessões do projeto: {{$projeto->nome}}</span>
 		<br>
-		<a class="btn btn-outline-primary mt-2" href="{{route('sessaos.create')}}">+</a>
+		<a class="btn btn-outline-primary" href="{{route('sessaos.create')}}"><i class="fa-solid fa-plus"></i></a>
 	</div>
 </div>
 

@@ -47,8 +47,10 @@
 			<td>{{$sessao->fechamento}}</td>
 
 			<td>
-				<a href="{{route('sessao.reopen',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-				<a href="{{route('sessao.details',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+				<div class=" btn-group">	
+					<a href="{{route('sessao.reopen',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+					<a href="{{route('sessao.details',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+				</div>
 			</td>
 		</tr>
 		@endforeach

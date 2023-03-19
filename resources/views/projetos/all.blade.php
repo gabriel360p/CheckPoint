@@ -31,16 +31,18 @@
 			</td>
 
 			<td>
-				<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
-				<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-table-list"></i></a>
-				@if($projeto->producao==true)
-					<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i></a>
-				@else
-					<a href="{{url('projeto/reopen',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-				@endif
-				@if($message = Session::get('sessaoAberta'))
-					<span class="badge text-bg-warning">{{$message}}</span>
-				@endif
+				<div class="btn-group">
+					<a href="{{route('projetos.show',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+					<a href="{{url('projeto/sessionsProject',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-table-list"></i></a>
+					@if($projeto->producao==true)
+						<a href="{{url('projeto/closed',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i></a>
+					@else
+						<a href="{{url('projeto/reopen',$projeto->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+					@endif
+					@if($message = Session::get('sessaoAberta'))
+						<span class="badge text-bg-warning">{{$message}}</span>
+					@endif
+				</div>
 			</td>
 			
 		</tr>
