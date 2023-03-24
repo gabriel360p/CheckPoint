@@ -14,7 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias=Categoria::simplePaginate(5);
+        $categorias=\DB::table('categorias')->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('categorias.index',['categorias'=>$categorias]);
     }
 
