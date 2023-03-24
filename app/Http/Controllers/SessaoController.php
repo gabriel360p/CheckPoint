@@ -138,7 +138,7 @@ class SessaoController extends Controller
         $categorias=Categoria::all();
         $projetos = \DB::table('projetos')->where('producao','=',true)->where('user_id','=',Auth::id())->get();
 
-        return view('sessaos.details',['sessao'=>$sessao,'categorias'=>$categorias,'projetos'=>$projetos->id]);
+        return view('sessaos.details',['sessao'=>$sessao,'categorias'=>$categorias,'projetos'=>$projetos]);
     }
 
 
