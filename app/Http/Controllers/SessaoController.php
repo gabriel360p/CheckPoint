@@ -113,7 +113,7 @@ class SessaoController extends Controller
 
     public function all()
     {
-        $sessaos=Sessao::where('user_id',Auth::id())->simplePaginate(5);
+        $sessaos=Sessao::where('user_id',Auth::id())->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('sessaos.all',['sessaos'=>$sessaos]);
     }
 
@@ -121,14 +121,14 @@ class SessaoController extends Controller
     {
         // $sessaos=\DB::table('sessaos')->where('user_id','=',Auth::id())->where('aberta','=',true)->get();
 
-        $sessaos=Sessao::where('user_id',Auth::id())->where('aberta',true)->simplePaginate(5);
+        $sessaos=Sessao::where('user_id',Auth::id())->where('aberta',true)->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('sessaos.opens',['sessaos'=>$sessaos]);
 
     }
 
     public function closeds()
     {
-        $sessaos=Sessao::where('user_id',Auth::id())->where('aberta',false)->simplePaginate(5);
+        $sessaos=Sessao::where('user_id',Auth::id())->where('aberta',false)->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('sessaos.closeds',['sessaos'=>$sessaos]);
         
     }

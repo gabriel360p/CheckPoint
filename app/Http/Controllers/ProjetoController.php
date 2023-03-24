@@ -16,7 +16,7 @@ class ProjetoController extends Controller
      */
     public function sessionsProject(Projeto $projeto)
     {
-        $sessaos=\DB::table('sessaos')->where('user_id','=',Auth::id())->where('projeto_id','=',$projeto->id)->simplePaginate(5);
+        $sessaos=\DB::table('sessaos')->where('user_id','=',Auth::id())->where('projeto_id','=',$projeto->id)->orderBy('created_at', 'desc')->simplePaginate(5);
         // dd($sessaos);
         return view('projetos.sessionsProject',['sessaos'=>$sessaos,'projeto'=>$projeto]);
     }
@@ -54,18 +54,20 @@ class ProjetoController extends Controller
 
     public function inProduction()
     {
-        return view('projetos.inProduction',['projetos'=>$projetos=Projeto::where('user_id',Auth::id())->where('producao',true)->simplePaginate(5)]);
+        return view('projetos.inProduction',['projetos'=>
+            $projetos=\DB::table('projetos')->where('user_id','=',Auth::id())->where('producao','=',true)->orderBy('created_at', 'desc')->simplePaginate(5)]);
     }
 
     public function outProduction()
     {
-        return view('projetos.outProduction
-            ',['projetos'=>$projetos=Projeto::where('user_id',Auth::id())->where('producao',false)->simplePaginate(5)]);
+        return view('projetos.outProduction',['projetos'=>
+                $projetos=\DB::table('projetos')->where('user_id','=',Auth::id())->where('producao','=',false)->orderBy('created_at', 'desc')->simplePaginate(5)]);
     }
 
     public function index()
     {
-        return view('projetos.all',['projetos'=>$projetos=Projeto::where('user_id',Auth::id())->simplePaginate(5)]);
+        return view('projetos.all',['projetos'=>
+                $projetos=\DB::table('projetos')->where('user_id','=',Auth::id())->orderBy('created_at', 'desc')->simplePaginate(5)]);
     }
 
     /**
