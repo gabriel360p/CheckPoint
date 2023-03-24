@@ -18,6 +18,7 @@
 		<th>Projeto</th>
 		<th>Abertura</th>
 		<th>Fechamento</th>
+		<th>Ação</th>
 	</thead>
 	<tbody>
 		@php 
@@ -48,7 +49,21 @@
 		@else
 			<td>{{$sessao->fechamento}}</td>
 		@endif
+			<td>
+	          @if($sessao->aberta==true)
+	          <div class="btn-group"> 
+	              <a href="{{route('sessao.closedPage',$sessao->id)}}" class="btn btn-outline-primary" ><i class="fa-solid fa-xmark"></i></a>
+	              <a href="{{route('sessaos.show',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+	          </div>  
+	          @else
+	          <div class=" btn-group">  
+	            <a href="{{route('sessao.reopen',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+	            <a href="{{route('sessao.details',$sessao->id)}}" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i></a>
+	        </div>
+	        @endif
+	    	</td>
 		</tr>
+
 		@endforeach
 
 	</tbody>

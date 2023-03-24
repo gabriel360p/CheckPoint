@@ -224,8 +224,11 @@
   <div class="container main-nav">
     <div class="main-nav-start">
       <div class="search-wrapper">
-        <i data-feather="search" aria-hidden="true"></i>
-        <input type="text" placeholder="Enter keywords ..." required>
+        <form method="POST" action="{{route('search')}}">
+            <input type="text" placeholder="Pesquisar" name="search" required>
+            @csrf
+            <button class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
       </div>
     </div>
     <div class="main-nav-end">

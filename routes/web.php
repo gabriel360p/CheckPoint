@@ -5,6 +5,7 @@ use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProjetoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 // use Closure;
 
 
@@ -72,6 +73,8 @@ Route::middleware('auth','verify-email')->group(function () {
 
     Route::resource('users',UserController::class);
     Route::post('user/update/{user}',[UserController::class,'update'])->name('user.update');
+
+    Route::post('search',[SearchController::class,'search'])->name('search');
 
     Route::get('back',function(Request $request){
         return back();
