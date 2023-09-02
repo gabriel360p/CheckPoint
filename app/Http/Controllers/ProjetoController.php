@@ -93,7 +93,7 @@ class ProjetoController extends Controller
         ]);
 
         $projeto = $request->nome;
-        Auth::user()->notify(new notifyNewProject(Auth::user(),$projeto));
+        // Auth::user()->notify(new notifyNewProject(Auth::user(),$projeto));
 
         return redirect(url('projetos'));
     }

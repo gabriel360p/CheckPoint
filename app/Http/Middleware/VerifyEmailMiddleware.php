@@ -16,10 +16,10 @@ class VerifyEmailMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->hasVerifiedEmail()==true){
-            return $next($request);
-        }else{
-            return redirect(route('verification.notice'));
-        }
+        // if(Auth::user()->hasVerifiedEmail()==true){
+        //     return $next($request);
+        // }else{
+        //     return redirect(route('verification.notice'));
+        // }
     }
 }

@@ -53,7 +53,7 @@ class SessaoController extends Controller
         $user = Auth::user();
         $finalidades=$request->finalidades;
 
-        Auth::user()->notify(new notifyOpenSession($user,$finalidades));
+        // Auth::user()->notify(new notifyOpenSession($user,$finalidades));
 
         return redirect(url('sessao/opens'));
     }
@@ -170,7 +170,7 @@ class SessaoController extends Controller
         $user = Auth::user();
         $feitos = $request->feitos;
         
-        Auth::user()->notify(new notifyClosedSession($user, $feitos));
+        // Auth::user()->notify(new notifyClosedSession($user, $feitos));
 
         return redirect(route('sessao.opens'));
     }
