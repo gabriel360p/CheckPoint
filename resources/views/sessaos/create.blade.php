@@ -64,14 +64,14 @@
 
 
 
-      <label class="form-label-wrapper">
+      {{-- <label class="form-label-wrapper">
         <p class="form-label">Horário de Abertura</p>
         <small>Insira o horário de Abertura</small>
         <input class="form-input" type="datetime-local" name="abertura" >
         @error('abertura')
           <span class="badge text-bg-warning">{{$message}}</span>
         @enderror
-      </label>
+      </label> --}}
 
         @if((count($categorias)==0)||(count($projetos)==0))
         	<span class="badge text-bg-warning mt-2">Sem Categorias Cadastradas ou Projetos Cadastrados</span>        

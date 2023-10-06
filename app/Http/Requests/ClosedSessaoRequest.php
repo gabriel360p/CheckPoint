@@ -27,7 +27,7 @@ class ClosedSessaoRequest extends FormRequest
             'projeto'=>'required',
             'abertura'=>'required',
 
-            'fechamento'=>'required',
+            // 'fechamento'=>'required',
             'feitos'=>'min:4|required'
         ];
     }
@@ -45,7 +45,7 @@ class ClosedSessaoRequest extends FormRequest
 
             'abertura.required'=>'É necessário inserir uma data de abertura da sessão',
 
-            'fechamento.required'=>'É necessário inserir uma data de fechamento da sessão',
+            // 'fechamento.required'=>'É necessário inserir uma data de fechamento da sessão',
 
             'feitos.required'=>'A sessão precisa ter os feitos definidos',
 

@@ -25,7 +25,7 @@ class OpenSessaoRequest extends FormRequest
             'finalidades'=>'min:4|required',
             'categoria'=>'required',
             'projeto'=>'required',
-            'abertura'=>'required',
+            // 'abertura'=>'required',
         ];
     }
 
@@ -40,7 +40,7 @@ class OpenSessaoRequest extends FormRequest
 
             'projeto.required'=>'A sessão precisa ser afiliada a um projeto',
 
-            'abertura.required'=>'É necessário inserir uma data de abertura da sessão',
+            // 'abertura.required'=>'É necessário inserir uma data de abertura da sessão',
         ];
     }
 }

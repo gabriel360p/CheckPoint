@@ -27,11 +27,12 @@
   <!-- ! Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-start">
-        <div class="sidebar-head">
+        <div class="sidebar-head ">
             <a href="/dashboard" class="logo-wrapper" title="Home">
                 <span class="sr-only">Home</span>
                 <!-- icon logo -->
-                <span class="icon logo" aria-hidden="true"></span>
+                
+                <span class="icon logo" aria-hidden="true"></span> 
 
                 <div class="logo-text">
                     <span class="logo-title" style="font-size: 15px;">Checkpoint</span>

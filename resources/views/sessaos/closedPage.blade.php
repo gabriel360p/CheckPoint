@@ -73,14 +73,14 @@
 
       <hr>
 
-      <label class="form-label-wrapper">
+      {{-- <label class="form-label-wrapper">
         <p class="form-label">Horário de Fechamento</p>
         <small>Insira o horário de fechamento</small>
         <input class="form-input" type="datetime-local" name="fechamento" required value="{{$sessao->fechamento}}">
         @error('fechamento')
           <span class="badge text-bg-warning">{{$message}}</span>
         @enderror
-      </label>
+      </label> --}}
 
       <label class="form-label-wrapper">
         <p class="form-label">Feitos</p>

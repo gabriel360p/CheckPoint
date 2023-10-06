@@ -26,7 +26,7 @@
 				@if($projeto->producao==true)	
 					<span class="badge text-bg-warning">Em produção</span>
 				@else
-					<span class="badge text-bg-warning">Fora de produção</span>
+					<span class="badge text-bg-primary">Fora de produção</span>
 				@endif
 			</td>
 

@@ -12,6 +12,7 @@ use App\Http\Requests\OpenSessaoRequest;
 
 use App\Http\Requests\ClosedSessaoRequest;
 use Auth;
+// use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class SessaoController extends Controller
     {
         Sessao::create([
             'aberta'=>true,
-            'abertura'=>$request->abertura,
+            'abertura'=>\Carbon\Carbon::now()->toDateTimeString(),
             'categoria_id'=>$request->categoria,
             'user_id'=>Auth::id(),
             'finalidades'=>$request->finalidades,
@@ -163,7 +164,7 @@ class SessaoController extends Controller
             'categoria_id'=>$request->categoria,
             'finalidades'=>$request->finalidades, 
             'aberta'=>false,
-            'fechamento'=>$request->fechamento,
+            'fechamento'=>\Carbon\Carbon::now()->toDateTimeString(),
             'feitos'=>$request->feitos,           
         ]);
 
