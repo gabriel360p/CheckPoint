@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/065cbb313e.js" crossorigin="anonymous"></script> 
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="asset{{('assets/img/svg/logo.svg')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="asset{{('/checkpoint-logos/check-logo1-rem.png')}}" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 </head>
@@ -28,18 +28,20 @@
   <aside class="sidebar">
     <div class="sidebar-start">
         <div class="sidebar-head ">
-            <a href="/dashboard" class="logo-wrapper" title="Home">
+            {{-- <a href="/dashboard" class="logo-wrapper" title="Home">
                 <span class="sr-only">Home</span>
                 <!-- icon logo -->
-                
-                <span class="icon logo" aria-hidden="true"></span> 
+
+                 <span class="icon logo" aria-hidden="true"></span>  
+
+                <img src="{{asset('checkpoint-logos/check-logo1-rem.png')}}" alt="" style="height: 70px"> 
 
                 <div class="logo-text">
                     <span class="logo-title" style="font-size: 15px;">Checkpoint</span>
-                    <span class="logo-subtitle">Dashboard</span>
+                     <span class="logo-subtitle">Dashboard</span> 
                 </div>
 
-            </a>
+            </a> --}}
             <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
                 <span class="sr-only">Toggle menu</span>
                 <span class="icon menu-toggle" aria-hidden="true"></span>
@@ -208,7 +210,7 @@
         </div>
     </div>
     <div class="sidebar-footer">
-        <a href="##" class="sidebar-user">
+        <a href="/support" class="sidebar-user">
             <span class="sidebar-user-img">
                 <picture><source srcset="{{asset('assets/img/avatar/avatar-illustrated-01.webp')}}" type="image/webp"><img src="./img/avatar/avatar-illustrated-01.png" alt="User name"></picture>
             </span>
@@ -256,7 +258,7 @@
         <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
       </button> -->
 
-      <div class="notification-wrapper">
+      {{-- <div class="notification-wrapper">
         <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
           <span class="sr-only">To messages</span>
           <span class="icon notification active" aria-hidden="true"></span>
@@ -301,7 +303,7 @@
             <a class="link-to-page" href="##">Go to Notifications page</a>
           </li>
         </ul>
-      </div>
+      </div> --}}
       <div class="nav-user-wrapper">
         <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
           <span class="sr-only">My profile</span>

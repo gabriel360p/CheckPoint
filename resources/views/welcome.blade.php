@@ -18,7 +18,7 @@
         </style>
 
         <!-- Favicon -->
-      <link rel="shortcut icon" href="asset{{('assets/img/svg/logo.svg')}}" type="image/x-icon">
+      <link rel="shortcut icon" href="asset{{('/checkpoint-logos/check-logo1-rem.png')}}" type="image/x-icon">
       <!-- Custom styles -->
       <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 
@@ -41,10 +41,8 @@
         @endif
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <div class="flex justify-center">
-                <span class="icon logo" aria-hidden="true"></span>
-                <br>
-                <span class="display-3 text-white">CheckPoint</span>
+            <div class="text-center">
+                <img src="{{asset('/checkpoint-logos/check-logo1-rem.png')}}" alt="" >
             </div>
         </div>
 

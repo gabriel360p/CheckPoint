@@ -11,18 +11,28 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $projetos = \DB::table('projetos')->where('user_id','=',Auth::id())
+        $projetosNome = \DB::table('projetos')->where('user_id','=',Auth::id())
         ->where('nome','like','%'.$request->search.'%')
+        ->get();
+        
+        $projetosDesc = \DB::table('projetos')->where('user_id','=',Auth::id())
         ->where('descricao','like','%'.$request->search.'%')
         ->get();
 
-        $sessaos = \DB::table('sessaos')->where('user_id','=',Auth::id())
+        $sessaosFeitos = \DB::table('sessaos')->where('user_id','=',Auth::id())
         ->where('feitos','like','%'.$request->search.'%')
+        ->get();
+
+        $sessaosFinalidades = \DB::table('sessaos')->where('user_id','=',Auth::id())
         ->where('finalidades','like','%'.$request->search.'%')
         ->get();
 
-        // dd($sessaos,$projetos);
+        return view('results',[
+            'projetosNome'=>$projetosNome,
+            'projetosDesc'=>$projetosDesc,
+            'sessaosFeitos'=>$sessaosFeitos,
+            'sessaosFinalidades'=>$sessaosFinalidades,
+        ]);
 
-        return view('results',['projetos'=>$projetos,'sessaos'=>$sessaos]);
     }
 }

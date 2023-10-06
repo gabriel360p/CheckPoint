@@ -80,6 +80,10 @@ Route::middleware('auth')->group(function () {
     Route::get('back',function(Request $request){
         return back();
     })->name('back');
+
+    Route::get('/support',function(){
+        return view('support.index');
+    });
 });
 
 require __DIR__.'/auth.php';
